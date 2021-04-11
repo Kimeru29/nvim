@@ -24,6 +24,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'valloric/MatchTagAlways'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'jiangmiao/auto-pairs'
+" Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 let g:python_host_prog  = 'C://Python27/python.exe'
@@ -37,6 +38,19 @@ let g:python3_host_prog = 'C://Program Files/Python39/python3.exe'
 :map <C-j> :set filetype=json \| :syntax on \| :set foldmethod=syntax
 "zo for open
 "zc for close
+" open new split panes to right and below
+set splitright
+set splitbelow
+" turn terminal to normal mode with escape
+tnoremap <Esc> <C-\><C-t>
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+" open terminal on ctrl+n
+function! OpenTerminal()
+  split term://bash
+    resize 10
+    endfunction
+    nnoremap <c-t> :call OpenTerminal()<CR>
 
 " Auto indent your file.
 map <F7> gg=G<C-o><C-o>
